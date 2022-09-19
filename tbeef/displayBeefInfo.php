@@ -41,6 +41,9 @@
 	}
 </style>
 
+<input type='hidden' id='obj_beefCode' value=''>
+<input type='hidden' id='obj_beefNo' value=''>
+
 <section class="content-header">
      <h1>
         <b><?=$module?></b>
@@ -91,9 +94,11 @@
 			            </div>
 			        </div>
 
-		        	<div id="dvClassify" class="col-sm-4">
+		        	<div id="dvClassify" class="col-sm-3">
 		        	</div>
-		        	<div id="dvCropInfo" class="col-sm-8">
+		        	<div id="dvCropInfo" class="col-sm-5">
+		        	</div>
+		        	<div id="dvSumary" class="col-sm-4">
 		        	</div>
 			        
 			      </div>
@@ -123,8 +128,10 @@
 		
 	}
 
-	function getImgInfo(folder,file){
-		var url="<?=$rootPath?>/tbeefclassify/getBeefElementOne.php?folder="+folder+"&file="+file;
+	function getImgInfo(folder,file,beefNo){
+		var url="<?=$rootPath?>/tbeefclassify/getBeefElementOne.php?folder="+folder+"&file="+file+"&beefNo="+beefNo;
+		$("#obj_beefNo").val(beefNo);
+		$("#obj_beefCode").val(folder);
 		$("#dvClassify").load(url);
 		clearData();
 	}	
@@ -140,14 +147,42 @@
   	$("#dvCropInfo").html("");
   }
 
-	function getClassify(imgName){
+	function getClassify(imgName,beefNo){
 		var url="<?=$picPath?>/"+$("#obj_Beef").val()+"/"+imgName;
 		$("#obj_cropImg").attr("src",url);
-		getImgInfo($("#obj_Beef").val(),imgName);
+		getImgInfo($("#obj_Beef").val(),imgName,beefNo);
 		displayImgCrop($("#obj_Beef").val(),imgName);
 	}
 
-	
+	function confirmDelete(id){
+		swal.fire({
+			title: "คุณต้องการที่จะลบข้อมูลนี้หรือไม่?",
+			text: "***กรุณาตรวจสอบข้อมูลให้ครบถ้วนก่อนกดปุ่มตกลง",
+			type: "warning",
+			confirmButtonText: "ตกลง",
+			cancelButtonText: "ยกเลิก",
+			showCancelButton: true,
+			showConfirmButton: true
+		}).then((willDelete) => {
+		if (willDelete.value) {
+			url="<?=$rootPath?>/telementtransaction/delete.php?id="+id;
+			executeGet(url,false,"");
+			displayResult();
+		swal.fire({
+			title: "ลบข้อมูลเรียบร้อยแล้ว",
+			type: "success",
+			buttons: "ตกลง",
+		});
+		} else {
+			swal.fire({
+			title: "ยกเลิกการทำรายการ",
+			type: "error",
+			buttons: [false, "ปิด"],
+			dangerMode: true,
+		})
+		}
+		});
+}
 
   
 

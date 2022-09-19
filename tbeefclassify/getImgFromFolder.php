@@ -42,7 +42,7 @@
 					echo "</td>\n";
 					echo "<td>
 					<button type='button' class='btn btn-info'
-						onclick=\"getClassify('".$imgName."')\">
+						onclick=\"getClassify('".$imgName."','".$i."')\">
 						<span class='fa fa-eye'></span>
 					</button>\n";
 					echo "</tr>\n";

@@ -5,16 +5,18 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type,Access-Control-Allow-Headers, Authorization, X-Requested-With");
 include_once "../config/database.php";
-include_once "../objects/tbeef.php";
+include_once "../objects/tclassifytransaction.php";
 $database = new Database();
 $db = $database->getConnection();
-$obj = new tbeef($db);
+$obj = new tclassifytransaction($db);
 $data = json_decode(file_get_contents("php://input"));
-$obj->beefFolder = $data->beefFolder;
 $obj->beefCode = $data->beefCode;
-$obj->status = 0;
-$obj->classifyJudge = 0;
-$obj->createDate = Date("Y-m-d");
+$obj->accuracy = $data->accuracy;
+$obj->beefNo = $data->beefNo;
+$obj->grade = $data->grade;
+$obj->fat = $data->fat;
+$obj->beef = $data->beef;
+$obj->ratio = $data->ratio;
 if($obj->create()){
 		echo json_encode(array('message'=>true));
 }

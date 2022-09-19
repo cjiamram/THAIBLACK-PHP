@@ -77,7 +77,6 @@
   	strT+="<tbody>\n";
   	for(i=0;i<length;i++){
   		strT+="<tr>\n";
-  		//strT+="<td>"+(i+1)+"</td>\n";
   		strT+="<td>"+beefInfos[i].fatArea+"</td>\n";
   		strT+="<td>"+beefInfos[i].beefArea+"</td>\n";
   		strT+="<td>"+beefInfos[i].ratio.toFixed()+" %</td>\n";
@@ -87,6 +86,34 @@
   	strT+="</table>\n";
   	$("#dvCropInfo").html(strT);
   }
+
+   function displayResult(){
+   		var beefCode=$("#obj_beefCode").val();
+   		var beefNo=$("#obj_beefNo").val();
+   		var url="<?=$rootPath?>/telementtransaction/displayData.php?beefCode="+beefCode+"&beefNo="+beefNo;
+   		$("#dvCropInfo").load(url);
+   }
+
+  	function createByCrop(data,beefCode,beefNo){
+		var url="<?=$rootPath?>/telementtransaction/create.php";
+		//var square=JSON.stringify(data.square);
+		square=JSON.stringify(data.area);
+		console.log(square);
+		var jsonObj={
+  			fat:data.fatArea,
+  			beef:data.beefArea,
+  			ratio:data.ratio,
+  			beefCode:beefCode,
+  			beefNo:beefNo,
+  			square:square
+  		}
+
+  		jsonData=JSON.stringify(jsonObj);
+  		console.log(jsonData);
+
+  		var flag=executeData(url,jsonObj);
+  		return flag;
+  	}
 
  	$(document).ready(function(){
  		var size;
@@ -114,16 +141,17 @@
 		             }
 
 		             var jsonData=JSON.stringify(jsonObj);
-		             console.log(jsonData);
 		             var url="<?=$aiURL?>/getElementDetail";
-		             console.log(url);
 		             var data=execPost(url,jsonObj);
-		        
+		             //console.log(JSON.stringify(data));
+		             if(data.beefArea!==0&&data.fatArea!==0){
 
-		             beefInfos.push(data);
-		             displayCrop();
+		             	var flag= createByCrop(data,$("#obj_beefCode").val(),$("#obj_beefNo").val());
 
-		             //console.log(beefInfos);
+		             }
+
+		             displayResult();
+		             
 
 		          }
 
