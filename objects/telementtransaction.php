@@ -12,7 +12,9 @@ class  telementtransaction{
 	public $beefCode;
 	public $beefNo;
 	public $square;
+	public $fraction;
 	public function create(){
+		//print_r($this->fraction);
 		$query='INSERT INTO t_elementtransaction  
         	SET 
 			fat=:fat,
@@ -20,7 +22,8 @@ class  telementtransaction{
 			ratio=:ratio,
 			beefCode=:beefCode,
 			beefNo=:beefNo,
-			square=:square
+			square=:square,
+			fraction=:fraction
 	';
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(":fat",$this->fat);
@@ -29,6 +32,7 @@ class  telementtransaction{
 		$stmt->bindParam(":beefCode",$this->beefCode);
 		$stmt->bindParam(":beefNo",$this->beefNo);
 		$stmt->bindParam(":square",$this->square);
+		$stmt->bindParam(":fraction",$this->fraction);
 		$flag=$stmt->execute();
 		return $flag;
 	}
@@ -71,7 +75,8 @@ class  telementtransaction{
 			beef,
 			ratio,
 			beefCode,
-			square
+			square,
+			fraction
 		FROM t_elementtransaction 
 		WHERE 
 		beefCode=:beefCode 

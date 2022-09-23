@@ -16,6 +16,7 @@ $obj->ratio = $data->ratio;
 $obj->beefCode = $data->beefCode;
 $obj->beefNo = $data->beefNo;
 $obj->square = $data->square;
+$obj->fraction = $data->fraction;
 if($obj->create()){
 		echo json_encode(array('message'=>true));
 }

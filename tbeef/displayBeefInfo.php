@@ -45,38 +45,42 @@
 <input type='hidden' id='obj_beefNo' value=''>
 
 <section class="content-header">
-     <h1>
-        <b><?=$module?></b>
+ 
+      <div class="col-sm-6">
+      	<span style="color:white">
+        	<b><?=$module?></b>
 
-        <small>>><?=$lblInput?></small>
-      </h1>
-      <ol class="breadcrumb">
-       <a href="#" class="btn btn-success pull-right"><i class="fa fa-search" aria-hidden="true">Classify</i></a>
-      </ol>
+        		<small>>><?=$lblInput?></small>
+        </span>
+      </div>
+      <div class="col-sm-6">
+      		       <a href="#" class="btn btn-success pull-right"><i class="fa fa-search" aria-hidden="true">Classify</i></a>
+
+      </div>
+      <div class="col-sm-12">&nbsp;
+      </div> 
+
 
     </section>
 
        <section class="content container-fluid">
-        <div class="box"></div>
+        
          <div class="col-sm-12">
          	 <div class="box box-warning">
-					<div class="box-header with-border">
+			<div class="box-header with-border cols-sm-12" >
 					<h3 class="box-title"><b><?=$lblInput?></b></h3>
-					</div>
-					 <table id="tblMain" class="table table-bordered">
-		 <tr>
-		 	<td>
-		 		<table >
-		 			<tr>
-		      		<td width="150px">ข้อมูลเนื้อ</td>
-		      		<td width="450px">
-		      			<select class="form-control" id="obj_Beef"></select>
-		      		</td>
-		      	</tr>
-		 		</table>
-		 	</td>
-		 </tr>     	
-      	 </table>
+			</div>
+			<label class="col-sm-2">ข้อมูลเนื้อ</label>
+			<div class="col-sm-6">
+					<select class="form-control" id="obj_Beef"></select>
+			</div>
+			<div class="col-sm-4">&nbsp;
+			</div>
+			   <div class="col-sm-12">&nbsp;
+			   </div>
+			
+					
+
 
       	 <table width="100%">
       	 	<tr>
@@ -96,9 +100,9 @@
 
 		        	<div id="dvClassify" class="col-sm-3">
 		        	</div>
-		        	<div id="dvCropInfo" class="col-sm-5">
+		        	<div id="dvCropInfo" class="col-sm-7">
 		        	</div>
-		        	<div id="dvSumary" class="col-sm-4">
+		        	<div id="dvSumary" class="col-sm-2">
 		        	</div>
 			        
 			      </div>

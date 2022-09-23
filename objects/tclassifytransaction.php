@@ -13,6 +13,7 @@ class  tclassifytransaction{
 	public $beef;
 	public $ratio;
 	public $accuracy;
+	public $fraction;
 	public function create(){
 		$query='INSERT INTO t_classifytransaction  
         	SET 
@@ -22,7 +23,8 @@ class  tclassifytransaction{
 			fat=:fat,
 			beef=:beef,
 			ratio=:ratio,
-			accuracy=:accuracy
+			accuracy=:accuracy,
+			fraction=:fraction
 	';
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(":beefCode",$this->beefCode);
@@ -32,6 +34,7 @@ class  tclassifytransaction{
 		$stmt->bindParam(":beef",$this->beef);
 		$stmt->bindParam(":ratio",$this->ratio);
 		$stmt->bindParam(":accuracy",$this->accuracy);
+		$stmt->bindParam(":fraction",$this->fraction);
 
 		$flag=$stmt->execute();
 		return $flag;

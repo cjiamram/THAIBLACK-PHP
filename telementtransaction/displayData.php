@@ -26,7 +26,7 @@ echo "<thead>";
 			echo "<th>No.</th>";
 			echo "<th>ปริมาณไขมันแทรก</th>";
 			echo "<th>ปริมาณเนื้อแดง</th>";
-			echo "<th>สัดส่วน %</th>";
+			echo "<th>สัดส่วน (ไขมันแทรก/เนื้อ)</th>";
 			echo "<th>พื้นที่</th>";
 			echo "<th>จัดการ</th>";
 		echo "</tr>";
@@ -41,7 +41,7 @@ foreach ($data as $row) {
 			$strBeef=intval($row["beef"])*0.26/100;
 			echo '<td align="right">'.$strFat.'</td>';
 			echo '<td align="right">'.$strBeef.'</td>';
-			echo '<td align="right">'.$row["ratio"].' %</td>';
+			echo '<td align="right">'.$row["fraction"].'</td>';
 			echo '<td align="enter">'.$row["square"].'</td>';
 			echo "<td align='center'>
 			

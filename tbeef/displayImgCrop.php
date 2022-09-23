@@ -97,15 +97,17 @@
   	function createByCrop(data,beefCode,beefNo){
 		var url="<?=$rootPath?>/telementtransaction/create.php";
 		//var square=JSON.stringify(data.square);
+    console.log(url);
 		square=JSON.stringify(data.area);
-		console.log(square);
+		console.log(JSON.stringify(data));
 		var jsonObj={
   			fat:data.fatArea,
   			beef:data.beefArea,
   			ratio:data.ratio,
   			beefCode:beefCode,
   			beefNo:beefNo,
-  			square:square
+  			square:square,
+        fraction:data.fraction
   		}
 
   		jsonData=JSON.stringify(jsonObj);
@@ -141,7 +143,10 @@
 		             }
 
 		             var jsonData=JSON.stringify(jsonObj);
+
 		             var url="<?=$aiURL?>/getElementDetail";
+                 console.log(url);
+                 console.log(jsonData);
 		             var data=execPost(url,jsonObj);
 		             //console.log(JSON.stringify(data));
 		             if(data.beefArea!==0&&data.fatArea!==0){

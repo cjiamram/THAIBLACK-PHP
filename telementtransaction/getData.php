@@ -24,7 +24,8 @@ if($num>0){
 					"beef"=>$beef,
 					"ratio"=>$ratio,
 					"beefCode"=>$beefCode,
-					"square"=>$square
+					"square"=>$square,
+					"fraction"=>$fraction
 				);
 				array_push($objArr, $objItem);
 			}

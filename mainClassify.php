@@ -19,7 +19,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
   transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
   margin-left: 0px;
   z-index: 820;
-   background-color: #7555BE;
+   background-color: #4C3979;
 }
 </style>
 <body>
@@ -27,6 +27,10 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 
   </div>
 </body>
+
+<?php
+  $userCode=isset($_GET["userCode"])?$_GET["userCode"]:"Admin";
+?>
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="js/component.js"></script>
@@ -41,7 +45,7 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 
 <script >
   $(document).ready(function(){
-    var url="/BeefAPI/tbeef/displayBeefInfo.php";
+    var url="/BeefAPI/tbeef/displayBeefInfo.php?userCode=<?=$userCode?>";
     $("#dvMain").load(url);
   });
 

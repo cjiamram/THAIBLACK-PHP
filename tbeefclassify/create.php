@@ -19,6 +19,7 @@ $obj->classifyWeight = $data->classifyWeight;
 $obj->beefRatio = $data->beefRatio;
 $obj->fatRatio = $data->fatRatio;
 $obj->createDate = $data->createDate;
+$obj->fraction = $data->fraction;
 if($obj->create()){
 		echo json_encode(array('message'=>true));
 }

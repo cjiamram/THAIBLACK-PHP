@@ -12,9 +12,11 @@ $obj = new tbeef($db);
 $data = json_decode(file_get_contents("php://input"));
 $obj->beefFolder = $data->beefFolder;
 $obj->beefCode = $data->beefCode;
+$obj->fraction = $data->fraction;
 $obj->status = 0;
 $obj->classifyJudge = 0;
 $obj->createDate = Date("Y-m-d");
+//$obj->fraction=$data->fraction;
 if($obj->create()){
 		echo json_encode(array('message'=>true));
 }
